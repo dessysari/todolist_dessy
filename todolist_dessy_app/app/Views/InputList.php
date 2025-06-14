@@ -80,13 +80,28 @@
                   <div class="add-control">
                      <div class="form-group has-feedback">
                         <input type="text" class="form-control" placeholder="✍️ Add item..."/>
-                        <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i>
+                        <a href="<?= base_url('InputList/add') ?>" i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i>
                      </div>
                   </div>
                   <p class="err text-danger text-center hidden"><i class="fa fa-warning"></i> Oops! Please, enter name item</p>
                   <p class="no-items text-muted text-center hidden"><i class="fa fa-ban"></i></p>
                   <ul class="todo-list">
-                  </ul>
+                  </ul><table id="example1" class="table table-bordered table-striped">
+                 <thead>
+                    </thead>
+                    <tbody>
+                    <?php foreach($list as $todolist): ?>
+                        <tr>
+                        <td><?= $list['id_list'] ?></td>
+                        <td><?= $list['title'] ?></td>
+                        <td>
+                        <a href="<?= base_url('todolist/'.$katlist['id_list'].'/edit') ?>" class="btn btn-sm btn-outline-secondary">Edit</a>
+                        <a href="#" data-href="<?= base_url('todolist/'.$katlist['id_list'].'/delete') ?>" onclick="confirmToDelete(this)" class="btn btn-sm btn-outline-danger">Delete</a>
+                        </td>
+                        </tr>
+                        <?php endforeach ?>
+                        </tbody>
+                        </table>
                </div>
             </div>
          </div>
@@ -95,7 +110,7 @@
          </div>
          <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
          <script src='http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
-         <script  src="<?=base_url('js/index.js')?>"></script>
+         <!--<script  src="<?=base_url('js/index.js')?>"></script>-->
          <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
    </body>
    <div class"footer">
