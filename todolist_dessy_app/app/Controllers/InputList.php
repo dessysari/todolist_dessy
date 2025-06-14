@@ -11,7 +11,7 @@ class InputList extends BaseController
     public function index()
     { 
         $inputlist = new InputListModels();
-        $data['kat'] = $inputlist->findAll();
+        $data['Title'] = $inputlist->findAll();
         echo view('inputlist',$data);
     }
     public function tambah()
@@ -22,8 +22,8 @@ class InputList extends BaseController
         $isDataValid = $validation->withRequest($this->request)->run();
         //jika data valid, simpan ke database
         if($isDataValid){
-            $kat = new InputListModels();
-            $kat->insert([
+            $list = new InputListModels();
+            $list->insert([
                 "title"=>$this->request->getPost('title')]);
             return redirect('inputlist');
         }
@@ -32,15 +32,15 @@ class InputList extends BaseController
     public function edit($id)
     {
         //ambil artikel yang akan diedit
-        $kat = new InputListModels();
-        $data['inputlist'] = $kat->where('id_kategori', $id)->first();
+        $list = new InputListModels();
+        $data['inputlist'] = $list->where('id_list', $id)->first();
         //lakukan validasi data artikel
         $validation = \Config\Services::validation();
         $validation ->setRules(['title' => 'required']);
         $isDataValid = $validation->withRequest($this->request)->run();
         //jika data valid, simpan ke database
         if($isDataValid){
-            $kat->update($id,[
+            $list->update($id,[
                 "title"=>$this->request->getPost('title')]);
             return redirect('inputlist');
         }
@@ -48,8 +48,8 @@ class InputList extends BaseController
     }
     public function delete($id)
     {
-        $kat = new InputListModels();
-        $kat->delete($id);
+        $list = new InputListModels();
+        $list->delete($id);
         return redirect('inputlist');
     }
 }

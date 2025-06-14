@@ -95,8 +95,8 @@
                         <td><?= $list['id_list'] ?></td>
                         <td><?= $list['title'] ?></td>
                         <td>
-                        <a href="<?= base_url('todolist/'.$katlist['id_list'].'/edit') ?>" class="btn btn-sm btn-outline-secondary">Edit</a>
-                        <a href="#" data-href="<?= base_url('todolist/'.$katlist['id_list'].'/delete') ?>" onclick="confirmToDelete(this)" class="btn btn-sm btn-outline-danger">Delete</a>
+                        <a href="<?= base_url('todolist/'.$todolist['id_list'].'/edit') ?>" class="btn btn-sm btn-outline-secondary">Edit</a>
+                        <a href="#" data-href="<?= base_url('todolist/'.$todolist['id_list'].'/delete') ?>" onclick="confirmToDelete(this)" class="btn btn-sm btn-outline-danger">Delete</a>
                         </td>
                         </tr>
                         <?php endforeach ?>
